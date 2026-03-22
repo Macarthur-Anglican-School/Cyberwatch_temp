@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block heading %}
+Add incident
+{% endblock %}
+
+{% block content %}
+<form action = "/incidents" method="POST">
+    <div class="mb-3">
+        <label for="add_incident" class="form-label">Incident</label>
+        <input type="incident" class="form-control" id="add_incident">
+        <div id="incidentHelp" class="form-text">Name of incident</div>
+    </div>
+    <div class="mb-3">
+        <label for="TypeIncident" class="form-label">Vulnerability</label>
+        <input type="vulnerability" class="form-control" id="TypeIncident">
+        <div id="VulnerabilityType" class="form-text">Vulnerability exploited</div>
+    </div>
+    <div class="mb-3">
+        <label for="add_year" class="form-label">Year of Incident</label>
+        <input type="year" class="form-control" id="add_year">
+        <div id="IncidentYear" class="form-text">Year it took place</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

@@ -1,9 +1,20 @@
 from flask import Flask, request, render_template, redirect, url_for
 from sqlalchemy import create_engine, text
 
+engine = create_engine("sqlite:///cyberwatch.db")
+
 app = Flask(__name__)
 
-engine = create_engine('sqlite:///database/cyberwatch.db') #link to the cyberwatch database here
+engine = create_engine('sqlite:///.database/cyberwatch.db') #link to the cyberwatch database here
+
+@app.route('/dashboard')
+def dashbord():
+    with engine.connect() as connection:
+        query = text("SELECT * FROM incidents")
+        result = connection.execute(query)
+        all_incidents = result.fetchall()
+    return render_template('dashboard.html')
+
 
 #route for index.html
 @app.route('/')
@@ -15,19 +26,24 @@ def home():
         query = text('SELECT * FROM vulnerabilities ORDER BY owasp_rank;')
         result = connection.execute(query).fetchall()
 
+    print('Loading homepage...')
     return render_template('index.html', vulnerabilities=result)
 
 @app.route('/incidents/<vul_id>')
 def incident_page(vul_id):
     # TASK 1: Connect to the database
-
+    with engine.connect() as connection:
+        query = text('SELECT * FROM incidents WHERE vul_id = {};'.format(vul_id))
+        result = connection.execute(query).fetchall()
+        
     # TASK 2: Fetch the Vulnerability Name for the heading (JOIN or separate query)
-
+  
     # TASK 3: Fetch all Incidents linked to this vul_id, return incidents list
     
+
     print(vul_id) #this is a print statement to help you understand what data is being returned
-    return render_template('incidents.html', vulnerability = vul_id)
+    return render_template('incidents.html', vulnerability = vul_id, incidents = result)
 
 
 
-app.run(debug=True, reloader_type='stat', port=5000)
+app.run(debug=True, reloader_type='stat', port=3000)

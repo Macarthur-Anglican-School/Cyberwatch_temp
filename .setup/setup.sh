@@ -21,7 +21,8 @@ touch static/css/styles.css
 touch static/icons/icon-192.png static/icons/icon-512.png
 #TO DO
 #make the manifest.json file in the static folder
+touch static/json/manifest.json
 #make the service-worker.js file in the static/js folder
-
+touch static/js/service-worker.js
 
 echo "✅ Project Ready! Use 'ls -R' to verify."
