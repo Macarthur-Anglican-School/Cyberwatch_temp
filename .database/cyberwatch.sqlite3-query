@@ -40,6 +40,6 @@
 -- VALUES (1,'First American Financial Corp','https://www.wired.com/story/first-american-data-exposed/', 2019);
 
 -- TO DO: write a query that shows all incidents of Broken Access Control
-SELECT *
-FROM incidents
-WHERE vul_id = 1;
+SELECT vul_name
+FROM vulnerabilities
+WHERE id = 2;

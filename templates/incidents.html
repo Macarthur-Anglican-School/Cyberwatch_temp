@@ -6,36 +6,25 @@
 {{ vulnerability }}
 {% endblock %}
 
-{{ incidents }}
-{% block content %}
 
+{% block content %}
+{{ incidents }}
+<div class="row">
+    {% for i in incidents %}
+    <div class="col-12 col-md-6 mb-3">
+        <div class="card p-3">
+            <h5>Rank: {{ i.inc_name }}</h5>
+            <p>{{ i.inc_year }}</p>
+            <a href={{i.inc_url}} class="btn btn-primary">View</a>
+            
+            
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
 
 <!-- Use a for loop to display the incidents that match the vulnerability. -->
 
 
 <!-- Add the button for adding a new incident -->
-<h2>Add new Incident</h2>
-<form>
-    <div class="mb-3">
-        <label for="add_incident" class="form-label">Incident</label>
-        <input type="incident" class="form-control" id="add_incident">
-        <div id="incidentHelp" class="form-text">Name of incident</div>
-    </div>
-    <div class="mb-3">
-        <label for="TypeIncident" class="form-label">Vulnerability</label>
-        <input type="vulnerability" class="form-control" id="TypeIncident">
-        <div id="VulnerabilityType" class="form-text">Vulnerability exploited</div>
-    </div>
-    <div class="mb-3">
-        <label for="add_year" class="form-label">Year of Incident</label>
-        <input type="year" class="form-control" id="add_year">
-        <div id="IncidentYear" class="form-text">Year it took place</div>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-
-<a href="" class="btn btn-primary">Back to Incidents Page</a>
-{% endblock %}
-
-<label for="incidents" >'incidents:'</label>
