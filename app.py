@@ -7,14 +7,6 @@ app = Flask(__name__)
 
 engine = create_engine('sqlite:///.database/cyberwatch.db') #link to the cyberwatch database here
 
-@app.route('/dashboard')
-def dashbord():
-    with engine.connect() as connection:
-        query = text("SELECT * FROM incidents")
-        result = connection.execute(query)
-        all_incidents = result.fetchall()
-    return render_template('dashboard.html')
-
 
 #route for index.html
 @app.route('/')
@@ -47,6 +39,9 @@ def incident_page(vul_id):
     print(vul_id) #this is a print statement to help you understand what data is being returned
     return render_template('incidents.html', vulnerability = new_result[0][0], incidents = result)
 
+@app.route('/add-incident')
+def add_incident_page():
 
+    return render_template('add-incident.html')
 
 app.run(debug=True, reloader_type='stat', port=3000)
