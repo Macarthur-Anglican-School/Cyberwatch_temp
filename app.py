@@ -44,4 +44,43 @@ def add_incident_page():
 
     return render_template('add-incident.html')
 
-app.run(debug=True, reloader_type='stat', port=3000)
+
+# @app.route('/add-incident', methods=['GET'])
+# def show_form():
+#         return render_template('index.html', )
+
+# @app.route('/add-incident', methods=['POST'])
+# def add_incident():
+#     Incident = request.form['Incident']
+#     Vulnerability = request.form['Vulnerability']
+#     Year = request.form['Year']
+
+#     insert_statement = '''
+#         INSERT INTO incidents (Incident, Vulnerability, URL, Year)
+#         VALUES ('{}','{}', '{}', {});
+#     '''.format(Incident, Vulnerability, URL, Year)
+
+#     return redirect(url_for('base'))
+
+@app.route('/add-incident/<vul_id>', methods=['GET', 'POST'])
+def add_incident(vul_id):
+    if request.method == 'GET':
+        with engine.connect() as connection:
+            vulname_query = text("SELECT vul_name FROM vulnerabilites WHERE id = {}".format(vul_id))
+            vulname_result = connection.execute(vulname_query, {vul_id}).fetchall()
+        return render_template("add-incident.html", vul_id=vul_id, vul_name=vulname_result[0])
+    
+    if request.method == 'POST':
+        inc_name = request.form['inc_name']
+        inc_url = request.form['inc_url']
+        inc_year = request.form['inc_year']
+        vul_id = request.form['vul_id']
+
+        with engine.connect() as connection:
+            form_query = text(f"INSERT INTO incidents (inc_name, inc_url, inc_year, vul_id)' "f"VALUES ('{inc_name}', '{inc_url}', '{inc_year}', '{vul_id}');")
+            connection.execute(form_query)
+            connection.commit()
+
+        return redirect(url_for('incidents', vul_id = vul_id))
+
+app.run(debug=True, reloader_type='stat', port=5000)
