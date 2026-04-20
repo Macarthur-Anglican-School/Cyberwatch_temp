@@ -1,24 +1,21 @@
 {% extends 'base.html' %}
 
 {% block heading %}
-Add incident
+Add Incident
 {% endblock %}
 
 {% block content %}
 <form action = "/add-incident" method="POST">
     <div class="mb-3">
-        <label for="add_incident" class="form-label">Incident</label>
         <div id="incidentHelp" class="form-text">Name of incident</div>
         <input type="incident" class="form-control" name="Incident" id="add_incident">
     </div>
     <div class="mb-3">
-        <label for="TypeUrl" class="form-label">Url</label>
         <div id="UrlType" class="form-text">Url Link</div>
         <input type="url" class="form-control" name="URL" id="TypeUrl">
     </div>
 
     <div class="mb-3">
-        <label for="add_year" class="form-label">Year of Incident</label>
         <div id="IncidentYear" class="form-text">Year it took place</div>
         <input type="year" class="form-control" name="Year" id="add_year">
     </div>

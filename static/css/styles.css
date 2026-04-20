@@ -1,9 +1,44 @@
 .form-label{
     outline: 0;
-    background: #04d704;
+    background: #3facef;
     margin-top: 0.5rem;
     text-align:center;
     border-radius:15px;
     height:3.5rem;
     cursor:pointer;
 }
+body {
+    margin: 0;
+    background-color: rgb(112, 164, 231);
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
+  .header {
+    background-color: white;
+    color: black;
+    display: flex;         
+    align-items: center;   
+    padding: 10px 20px;
+  }
+
+  .header img {
+    height: 80px;     
+    margin-right: 10px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+  h1 {
+    font-family: "Times New Roman", Georgia, serif;
+  }
+  h2 {
+    font-family: "Times New Roman", Georgia, serif;
+  }
+  h5 {
+    font-family: "Times New Roman", Georgia, serif;
+  }
+  p {
+    font-family: "Times New Roman", Georgia, serif;
+  }

@@ -9,11 +9,13 @@
 
     </head>
     <body>
-        <h1>Cyberwatch</h1>
+    <div class="header">
         <img src='/static/icons/WhaleWatch_192.png' height='70'>
-        <h2>{% block heading%}Vulnerabilities tracker{% endblock %}</h2>
+        <h1>WhaleWatch</h1>
+    </div>
         
         <div class='content'>
+            <h2>{% block heading%}Vulnerabilities tracker{% endblock %}</h2>
             {% block content %}{% endblock %}
         </div>
         <script src="/static/js/script.js">
