@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-<!-- update the heading to be the vulnerability name that was clicked on from index.html -->
-
 {% block heading %}
 {{ vulnerability }}
 {% endblock %}
@@ -12,7 +10,7 @@
     {% for i in incidents %}
     <div class="col-12 col-md-6 mb-3">
         <div class="card p-3">
-            <h5>Rank: {{ i.inc_name }}</h5>
+            <h5>ID: {{ i.inc_name }}</h5>
             <p>{{ i.inc_year }}</p>
             <a href={{i.inc_url}} class="btn btn-primary">View</a>
         </div>
