@@ -1,6 +1,6 @@
 {
-    "name": "My Progressive Web App",
-    "short_name": "My PWA",
+    "name": "WhaleWatch",
+    "short_name": "WhaleWatch",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
